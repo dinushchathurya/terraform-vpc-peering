@@ -5,6 +5,7 @@ resource "aws_vpc" "this" {
     tags = merge(
         {
             "Name" = "${var.env_name}-vpc"
+            "Environment" = "${var.env_name}"
         },
         var.tags
     )
