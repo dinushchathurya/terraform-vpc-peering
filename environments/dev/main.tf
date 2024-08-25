@@ -29,3 +29,15 @@ module "subnet_requester" {
         "Environment" = "${var.subnet_requester_env_name}"
     }
 }
+
+module "subnet_reciever" {
+    source            = "../../modules/subnet"
+    vpc_id            = module.vpc_reciever.vpc_id
+    cidr_block        = var.subnet_reciever_cidr_block
+    availability_zone = var.subnet_reciever_availability_zone
+    env_name          = var.subnet_reciever_env_name
+    tags = {
+        "Name"        = "${var.subnet_requester_env_name}-reciever-public-subnet"
+        "Environment" = "${var.subnet_requester_env_name}"
+    }
+}
